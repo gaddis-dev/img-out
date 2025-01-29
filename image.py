@@ -3,4 +3,5 @@ import PIL.Image
 image = PIL.Image.open(input('image: ') + '.jpg')
 input()
 image = image.resize(size()[::-1])
-print(list(image.getdata()), image, '\033[48;5;{r};{g};{}m h')
+r, g, b = 100, 100, 100
+print(list(image.getdata()), image, f'\033[48;5;{r};{g};{b}m h')
