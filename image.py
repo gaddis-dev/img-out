@@ -1,7 +1,19 @@
 from os import get_terminal_size as size
 import PIL.Image
-image = PIL.Image.open(input('image: ') + '.jpg')
+image = PIL.Image.open('image1.jpg')
+
+#ok
 input()
-image = image.resize(size()[::-1])
+
+w, h = size()
+# image = image.resize((w, h))
 r, g, b = 100, 100, 100
-print(list(image.getdata()), image, f'\033[48;5;{r};{g};{b}m h')
+# f'\033[48;5;{r};{g};{b}m'
+for y in range(h):
+    for x in range(w):
+        try:
+            r, g, b = image.getpixel((x, y))
+        except Exception as e:
+            pass
+        print(f'\033[48;5;{r};{g};{b}m ', end = '')
+    print('\033[0m')
